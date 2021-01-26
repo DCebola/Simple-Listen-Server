@@ -14,17 +14,13 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     textBody(req, res, function (err, body) {
-        // invalid HTTP protocol or something
         if (err) {
             res.statusCode = 500;
             return res.end('Error');
         }
-
-        util.puts(body);
+        console.log(body);
         res.end('');
-
-        // I am an echo server
-        // res.end(body);
+        res.end(body);
     });
 });
 
