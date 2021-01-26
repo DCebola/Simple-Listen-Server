@@ -1,12 +1,23 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+)
+
+app.use(bodyParser.json())
+
 app.get('/', (req, res) => {
-    res.send(`Received request from${req.baseUrl}`)
-    res.send(
-        req.body
-    )
+    res.send(`Online`)
+})
+
+app.get('/sniff', (req, res) =>{
+    console.log(req)
+    res.send("Got it.")
 })
 
 app.listen(port, () => {
