@@ -8,8 +8,12 @@ var express = require('express'),
 
 app.use(morgan('combined'));
 
-app.post('/', function(req, res) {
-    textBody(req, res, function(err, body) {
+app.get('/', function (req, res) {
+    res.send("Listening")
+})
+
+app.post('/', function (req, res) {
+    textBody(req, res, function (err, body) {
         // invalid HTTP protocol or something
         if (err) {
             res.statusCode = 500;
@@ -24,6 +28,6 @@ app.post('/', function(req, res) {
     });
 });
 
-app.listen(port, function() {
+app.listen(port, function () {
     console.log("Starting")
 });
