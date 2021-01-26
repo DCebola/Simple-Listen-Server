@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = process.env.PORT| 3000
+const PORT = process.env.PORT || 3001;
 
 app.use(
     bodyParser.urlencoded({
@@ -20,6 +20,6 @@ app.get('/sniff', (req, res) =>{
     res.send("Got it.")
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(PORT, () => {
+    console.log("Server is running on port 3001.")
+});
