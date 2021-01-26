@@ -25,8 +25,5 @@ app.post('/', function(req, res) {
 });
 
 app.listen(port, function() {
-    util.puts('==========================================='.yellow);
-    util.puts(' Starting Application...'.yellow);
-    util.puts((' Listening on port ' + port).yellow);
-    util.puts('==========================================='.yellow);
+    console.log("Starting")
 });
