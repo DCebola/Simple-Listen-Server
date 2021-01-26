@@ -18,7 +18,7 @@ app.post('/', function (req, res) {
             res.statusCode = 500;
             return res.end('Error');
         }
-        res.end(body);
+        res.send(body);
     });
 });
 
