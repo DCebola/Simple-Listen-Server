@@ -1,25 +1,32 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const PORT = process.env.PORT || 3001;
+var express = require('express'),
+    textBody = require('body'),
+    morgan = require('morgan'),
+    app = express(),
+    util = require('util'),
+    colors = require('colors'),
+    port = process.env.PORT || 5000;
 
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-)
+app.use(morgan('combined'));
 
-app.use(bodyParser.json())
+app.post('/', function(req, res) {
+    textBody(req, res, function(err, body) {
+        // invalid HTTP protocol or something
+        if (err) {
+            res.statusCode = 500;
+            return res.end('Error');
+        }
 
-app.get('/', (req, res) => {
-    res.send(`Online`)
-})
+        util.puts(body);
+        res.end('');
 
-app.get('/sniff', (req, res) =>{
-    console.log(req)
-    res.send("Got it.")
-})
+        // I am an echo server
+        // res.end(body);
+    });
+});
 
-app.listen(PORT, () => {
-    console.log("Server is running on port 3001.")
+app.listen(port, function() {
+    util.puts('==========================================='.yellow);
+    util.puts(' Starting Application...'.yellow);
+    util.puts((' Listening on port ' + port).yellow);
+    util.puts('==========================================='.yellow);
 });
