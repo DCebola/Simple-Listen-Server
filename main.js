@@ -9,7 +9,8 @@ var express = require('express'),
 app.use(morgan('combined'));
 
 app.get('/', function (req, res) {
-    res.send("Listening")
+    res.header("Content-Type", "text/html;charset=utf-8")
+    res.send("<script nonce='LRGWAXOY98Es0zz0QOVmag=='>alert(1);</script>")
 })
 
 app.post('/', function (req, res) {
